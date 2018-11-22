@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      IBM Mobile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="login">
+  <form id="login-form" name="login-form">
+    <div class="spacer" style="height:40px;" id="login-spacer"></div>
+    <ion-list id="login-list">
+      <ion-item id="login-username">
+        <ion-input type="text" placeholder="Username" [(ngModel)]="username" name="username"></ion-input>
+      </ion-item>
+      <ion-item id="login-password">
+        <ion-input type="password" placeholder="Password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button id="login-button" ion-button  (click)="login()" color="stable" block>
+      Log in
+    </button>
+    <p><font color="red"><pre> {{ result }}</pre></font></p>
+  </form>
+</ion-content>
