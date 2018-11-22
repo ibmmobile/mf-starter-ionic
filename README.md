@@ -13,7 +13,7 @@ A sample Ionic application demonstrating use of the Mobile Security, JSONStore S
 
 1. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available `UserLogin` and `JSONStoreCloudantSync` adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/).
 
-	The `UserLogin` Security Check adapter and `JSONStoreCloudantSync` Resource adapter can be found inside `adapters` folder.
+	The `UserLogin` Security Check adapter and `JSONStoreCloudantSync` Resource adapter can be found inside `Adapters` folder.
 
 2. From a command-line window, navigate to the project's root folder and run the commands:
  - `ionic cordova platform add` - to add a platform.
