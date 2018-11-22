@@ -4,9 +4,10 @@ IBM Mobile
 A sample Ionic application demonstrating use of the Mobile Security, JSONStore Synchronization and Push Notification Capabilities using IBM Mobile Foundation.
 
 <p float="left">
-  <img src="images/login.png" width="500" />
-  <img src="images/home.png" width="500" /> 
+  <img src="images/login.png" width="400" />
+  <img src="images/home.png" width="400" /> 
 </p>
+
 
 ### Usage
 
