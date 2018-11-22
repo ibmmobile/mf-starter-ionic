@@ -22,7 +22,7 @@
    
   <ion-list class="outer-content">
     <ion-list-header>
-        Active Tasks
+        Open Tasks
      </ion-list-header>
       <ion-item *ngFor="let activity of activityList">
           <ion-thumbnail item-start>
@@ -48,6 +48,6 @@
         </ion-list>
   
   <div *ngIf="activityList.length == 0" style="height: 100%;position: relative;top: 45%;text-align: center;">
-      <div style="font-size: 20px;text-align: center;color: #90949c;">Pull to fetch activities</div>
+      <div style="font-size: 20px;text-align: center;color: #90949c;">Pull to fetch tasks</div>
   </div>
 </ion-content>
