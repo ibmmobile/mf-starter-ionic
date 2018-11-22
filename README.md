@@ -16,8 +16,10 @@ A sample Ionic application demonstrating use of the Mobile Security, JSONStore S
 	The `UserLogin` Security Check adapter and `JSONStoreCloudantSync` Resource adapter can be found inside `Adapters` folder.
 
 2. From a command-line window, navigate to the project's root folder and run the commands:
- - `ionic cordova platform add` - to add a platform.
+ - `ionic cordova platform add` - to add a iOS/Android/Browser platform.
  - `mfpdev app register` - to register the application.
+ - `ionic cordova prepare` - to prepare the application.
+ - `ionic build` - to build the application.
  - `ionic cordova run` - to run the application.
 
 3. Run the application in an Android Emulator, iOS Simulator, Browser or physical device.
