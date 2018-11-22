@@ -1,0 +1,4 @@
+com/ibm/mobile/jsonstore/JSONStoreCloudantSyncApplication.class
+com/ibm/mobile/jsonstore/JSONStoreDocument.class
+com/ibm/mobile/jsonstore/ModificationsList.class
+com/ibm/mobile/jsonstore/JSONStoreCloudantSyncResource.class
