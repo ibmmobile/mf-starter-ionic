@@ -20,6 +20,7 @@ export class Activity {
 export class HomePage {
   activityList: Activity[];
   completedList: Activity[];
+  private dbname = 'activities';
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.activityList = [];
@@ -27,7 +28,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-      console.log('ionViewDidLoad activityListPage');
+     console.log('-->  ionViewDidLoad(): Page Succesfully loaded - Initialize JSONStore');
       var dbSchema = {
         activities : {
           searchFields: {name: 'string', description: 'string', thumbnail: 'string'},
@@ -39,17 +40,18 @@ export class HomePage {
       };
       WL.JSONStore.init(dbSchema, {}).then(
         (collection) => {
+          console.log('-->  ionViewDidLoad(): JSONStore Initialization Success');
           console.log(JSON.stringify(collection));
         }, (error) => {
-          console.log('Sync Failed');
+          console.log('-->  ionViewDidLoad(): JSONStore Initialization Failed :' + JSON.stringify(error));
       });  
     }
 
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-    var dbInstance = WL.JSONStore.get("activities")
+    var dbInstance = WL.JSONStore.get(this.dbname);
     dbInstance.sync().done(
       (success) => {
+        console.log('-->  doRefresh(): JSONStore Sync Success');
         dbInstance.findAll(null).then(
           (data) => {
             this.activityList = [];
@@ -62,12 +64,14 @@ export class HomePage {
           } 
         )
       }, (error) => {
+        console.log('-->  doRefresh(): JSONStore Sync Failed :' + JSON.stringify(error));
         refresher.complete();
       }
     );
   }
 
   removeItem(activity) {
+    console.log('-->  removeItem(): Move item from Active to Complete Tab');
     this.completedList.push(activity);
     let index = this.activityList.indexOf(activity);
     if(index > -1){

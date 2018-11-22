@@ -30,6 +30,7 @@ export class LoginPage {
       password: this.password
     };
     if (!this.isChallenged) {
+      console.log('-->  login(): First time login attempt');
       WLAuthorizationManager.login(this.securityCheck, credentials).then(
         () => {
           console.log('-->  login(): Success ');
@@ -39,6 +40,7 @@ export class LoginPage {
           this.updateResult('Login Failure : ' + error.errorMsg);
         });
     } else {
+      console.log('-->  login(): Subsequent login attempt');
       this.UserLoginChallengeHandler.submitChallengeAnswer(credentials);
       this.isChallenged = false;
     }
@@ -46,6 +48,7 @@ export class LoginPage {
 
   public updateResult(msg: string) {
     this.zone.run(() => {
+      console.log('-->  updateResult(): Update Message and Refresh Text Boxes');
       this.result = msg;
       // Clear text boxes
       this.username = "";
