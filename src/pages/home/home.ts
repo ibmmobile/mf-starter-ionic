@@ -54,15 +54,14 @@ export class HomePage {
         console.log('-->  doRefresh(): JSONStore Sync Success');
         dbInstance.findAll(null).then(
           (data) => {
+            console.log('-->  doRefresh(): JSONStore Documents Fetch Success');
             this.activityList = [];
             data.forEach( item => {
               var activity = new Activity(item.name,item.description,item.thumbnail);
               this.activityList.push(activity);
-              refresher.complete();
             });
-            console.log(JSON.stringify(data));
-          } 
-        )
+            refresher.complete();
+          });
       }, (error) => {
         console.log('-->  doRefresh(): JSONStore Sync Failed :' + JSON.stringify(error));
         refresher.complete();
