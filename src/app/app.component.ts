@@ -43,7 +43,7 @@ export class MyApp {
 
   displayLoginChallenge(response) {
     if (response.errorMsg) {
-      var msg = response.errorMsg + ' <br> Remaining attempts: ' + response.remainingAttempts;
+      var msg = response.errorMsg + ', Remaining attempts: ' + response.remainingAttempts;
       console.log('--> displayLoginChallenge ERROR: ' + msg);
       this.events.publish('mfp:challenge', msg, this.UserLoginChallengeHandler);
     } else {

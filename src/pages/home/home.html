@@ -28,8 +28,8 @@
           <ion-thumbnail item-start>
               <img [attr.src]="activity.imagePath">
           </ion-thumbnail>
-          <h2>{{activity.name}}</h2>
-          <p>{{activity.address}}</p>
+          <h2>{{activity.title}}</h2>
+          <p>{{activity.description}}</p>
           <button ion-button clear (click)="removeItem(activity)" item-end>Done</button>
       </ion-item>
     </ion-list>
@@ -42,8 +42,8 @@
               <ion-thumbnail item-start>
                   <img [attr.src]="activity.imagePath">
               </ion-thumbnail>
-              <h2>{{activity.name}}</h2>
-              <p>{{activity.address}}</p>
+              <h2>{{activity.title}}</h2>
+              <p>{{activity.description}}</p>
           </ion-item>
         </ion-list>
   
