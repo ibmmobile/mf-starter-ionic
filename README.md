@@ -24,7 +24,7 @@ A sample Ionic application demonstrating use of the Mobile Security, JSONStore S
 
 ### Bugs and Issues
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/vittalpai/mf-starter-ionic/issues) here on Github.
+Have a bug or an issue with this template? [Open a new issue](https://github.com/ibmmobile/mf-starter-ionic/issues) here on Github.
 
 ### Supported Levels
 IBM Mobile Foundation 8.0
