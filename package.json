@@ -32,6 +32,7 @@
     "cordova-plugin-ionic-webview": "^2.2.3",
     "cordova-plugin-mfp": "8.0.2018111408",
     "cordova-plugin-mfp-jsonstore": "8.0.2018090313",
+    "cordova-plugin-mfp-push": "^8.0.2019031905",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
@@ -55,7 +56,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-mfp-jsonstore": {}
+      "cordova-plugin-mfp-jsonstore": {},
+      "cordova-plugin-mfp-push": {}
     },
     "platforms": [
       "ios"

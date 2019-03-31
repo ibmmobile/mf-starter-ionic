@@ -124,5 +124,6 @@
     <mfp:directUpdateAuthenticityPublicKey />
     <mfp:languagePreferences>en</mfp:languagePreferences>
     <plugin name="cordova-plugin-mfp-jsonstore" spec="8.0.2018090313" />
+    <plugin name="cordova-plugin-mfp-push" spec="^8.0.2019031905" />
     <engine name="ios" spec="4.5.5" />
 </widget>

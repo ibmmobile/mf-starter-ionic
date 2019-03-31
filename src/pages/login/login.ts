@@ -30,17 +30,17 @@ export class LoginPage {
       password: this.password
     };
     if (!this.isChallenged) {
-      console.log('-->  login(): First time login attempt');
+      WL.Logger.debug('-->  login(): First time login attempt');
       WLAuthorizationManager.login(this.securityCheck, credentials).then(
         () => {
-          console.log('-->  login(): Success ');
+          WL.Logger.debug('-->  login(): Success ');
           this.app.getRootNav().setRoot(HomePage);
         }, (error) => {
-          console.log('-->  login(): Failure ', JSON.stringify(error));
+          WL.Logger.debug('-->  login(): Failure ' + JSON.stringify(error));
           this.updateResult('Login Failure : ' + error.errorMsg);
         });
     } else {
-      console.log('-->  login(): Subsequent login attempt');
+      WL.Logger.debug('-->  login(): Subsequent login attempt');
       this.UserLoginChallengeHandler.submitChallengeAnswer(credentials);
       this.isChallenged = false;
     }
@@ -48,7 +48,7 @@ export class LoginPage {
 
   public updateResult(msg: string) {
     this.zone.run(() => {
-      console.log('-->  updateResult(): Update Message and Refresh Text Boxes');
+      WL.Logger.debug('-->  updateResult(): Update Message and Refresh Text Boxes');
       this.result = msg;
       // Clear text boxes
       this.username = "";
