@@ -17,19 +17,19 @@ export class HeaderMenuComponent {
   private securityCheck = "UserLogin"
 
   constructor(public app: App, public menuCtrl: MenuController,) {
-    WL.Logger.debug('Hello HeaderMenuComponent Component');
+   console.log('Hello HeaderMenuComponent Component');
   }
 
   logout() {
     WLAuthorizationManager.logout(this.securityCheck).then(
       () => {
-        WL.Logger.debug('-->  logout(): Success ');
+       console.log('-->  logout(): Success ');
         this.menuCtrl.close();
         var nav = this.app.getRootNav();
         nav.setRoot(LoginPage);
       }, (error) => {
         this.menuCtrl.close();
-        WL.Logger.debug('-->  logout(): Failure ' + JSON.stringify(error));
+       console.log('-->  logout(): Failure ' + JSON.stringify(error));
       }
     );
   }

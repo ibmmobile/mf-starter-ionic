@@ -30,7 +30,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    WL.Logger.debug('-->  ionViewDidLoad(): Page Succesfully loaded - Initialize JSONStore');
+   console.log('-->  ionViewDidLoad(): Page Succesfully loaded - Initialize JSONStore');
     var dbSchema = {
       activities: {
         searchFields: { name: 'string', description: 'string', thumbnail: 'string' },
@@ -42,10 +42,10 @@ export class HomePage {
     };
     WL.JSONStore.init(dbSchema, {}).then(
       (collection) => {
-        WL.Logger.debug('-->  ionViewDidLoad(): JSONStore Initialization Success');
-        WL.Logger.debug(JSON.stringify(collection));
+       console.log('-->  ionViewDidLoad(): JSONStore Initialization Success');
+       console.log(JSON.stringify(collection));
       }, (error) => {
-        WL.Logger.debug('-->  ionViewDidLoad(): JSONStore Initialization Failed :' + JSON.stringify(error));
+       console.log('-->  ionViewDidLoad(): JSONStore Initialization Failed :' + JSON.stringify(error));
       });
   }
 
@@ -53,10 +53,10 @@ export class HomePage {
     var dbInstance = WL.JSONStore.get(this.dbname);
     dbInstance.sync().done(
       (success) => {
-        WL.Logger.debug('-->  doRefresh(): JSONStore Sync Success');
+       console.log('-->  doRefresh(): JSONStore Sync Success');
         dbInstance.findAll(null).then(
           (data) => {
-            WL.Logger.debug('-->  doRefresh(): JSONStore Documents Fetch Success');
+           console.log('-->  doRefresh(): JSONStore Documents Fetch Success');
             this.activityList = [];
             data.forEach(item => {
               var activity = new Activity(item.name, item.description, item.thumbnail);
@@ -65,14 +65,14 @@ export class HomePage {
             refresher.complete();
           });
       }, (error) => {
-        WL.Logger.debug('-->  doRefresh(): JSONStore Sync Failed :' + JSON.stringify(error));
+       console.log('-->  doRefresh(): JSONStore Sync Failed :' + JSON.stringify(error));
         refresher.complete();
       }
     );
   }
 
   removeItem(activity) {
-    WL.Logger.debug('-->  removeItem(): Move item from Active to Complete Tab'); 
+   console.log('-->  removeItem(): Move item from Active to Complete Tab'); 
     this.logAnalytics(activity);
     this.completedList.push(activity);
     let index = this.activityList.indexOf(activity);
@@ -82,7 +82,7 @@ export class HomePage {
   }
 
   logAnalytics(activity) {
-    WL.Logger.debug('-->  logAnalytics(): Log completed tasks'); 
+   console.log('-->  logAnalytics(): Log completed tasks'); 
     WL.Analytics.log({"job" : 'Completed task : ' + activity.title});
     WL.Analytics.send();
   }
@@ -90,11 +90,11 @@ export class HomePage {
   initializePush() {
     MFPPush.initialize(
       function (successResponse) {
-        WL.Logger.debug('-->  initializePush(): Failed to initialize');
+       console.log('-->  initializePush(): Failed to initialize');
         this.registerDevice()
         MFPPush.registerNotificationsCallback(this.notificationReceived);
       }, function (failureResponse) {
-        WL.Logger.debug('-->  initializePush(): Failed to initialize' + JSON.stringify(failureResponse));
+       console.log('-->  initializePush(): Failed to initialize' + JSON.stringify(failureResponse));
       });
   }
 
@@ -102,10 +102,10 @@ export class HomePage {
     MFPPush.registerDevice(
       null,
       function (successResponse) {
-        WL.Logger.debug('-->  registerPush(): Successfully registered device');
+       console.log('-->  registerPush(): Successfully registered device');
       },
       function (failureResponse) {
-        WL.Logger.debug('-->  registerPush(): Failed to register device:' + JSON.stringify(failureResponse));
+       console.log('-->  registerPush(): Failed to register device:' + JSON.stringify(failureResponse));
       });
   }
 

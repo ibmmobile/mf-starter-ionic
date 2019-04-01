@@ -22,21 +22,21 @@ export class MyApp {
 
     // register mfp init function after plugin loaded
     renderer.listenGlobal('document', 'mfpjsloaded', () => {
-      WL.Logger.debug('--> MobileFirst API plugin init complete');
+     console.log('--> MobileFirst API plugin init complete');
       this.MFPInitComplete();
     });
   }
 
   // MFP Init complete function
   MFPInitComplete() {
-    WL.Logger.debug('--> MFPInitComplete function called');
+   console.log('--> MFPInitComplete function called');
     this.registerChallengeHandler();  // register a ChallengeHandler callback for UserLogin security check
   }
 
   registerChallengeHandler() {
     this.UserLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
     this.UserLoginChallengeHandler.handleChallenge = ((challenge: any) => {
-      WL.Logger.debug('--> UserLoginChallengeHandler.handleChallenge called');
+     console.log('--> UserLoginChallengeHandler.handleChallenge called');
       this.displayLoginChallenge(challenge);
     });
   }
@@ -44,7 +44,7 @@ export class MyApp {
   displayLoginChallenge(response) {
     if (response.errorMsg) {
       var msg = response.errorMsg + ', Remaining attempts: ' + response.remainingAttempts;
-      WL.Logger.debug('--> displayLoginChallenge ERROR: ' + msg);
+     console.log('--> displayLoginChallenge ERROR: ' + msg);
       this.events.publish('mfp:challenge', msg, this.UserLoginChallengeHandler);
     } else {
       this.events.publish('mfp:challenge', 'Invalid Credentials', this.UserLoginChallengeHandler);
