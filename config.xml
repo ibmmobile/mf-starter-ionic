@@ -82,7 +82,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-mfp" spec="8.0.2018111408" />
     <mfp:android>
         <mfp:sdkChecksum>0</mfp:sdkChecksum>
         <mfp:appChecksum>0</mfp:appChecksum>
@@ -120,10 +119,11 @@
     </mfp:windows>
     <mfp:platformVersion>8.0.0.00-20181113-120031</mfp:platformVersion>
     <mfp:clientCustomInit enabled="false" />
-    <mfp:server runtime="mfp" url="http://9.109.198.77:9080" />
+    <mfp:server runtime="mfp" url="http://9.109.198.221:9080" />
     <mfp:directUpdateAuthenticityPublicKey />
     <mfp:languagePreferences>en</mfp:languagePreferences>
-    <plugin name="cordova-plugin-mfp-jsonstore" spec="8.0.2018090313" />
-    <plugin name="cordova-plugin-mfp-push" spec="^8.0.2019031905" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-mfp" spec="8.0.2019031808" />
+    <plugin name="cordova-plugin-mfp-jsonstore" spec="8.0.2019012308" />
+    <plugin name="cordova-plugin-mfp-push" spec="8.0.2019031905" />
 </widget>
