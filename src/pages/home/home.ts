@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ItemPage } from '../item/item'
 
 export class Activity {
   public title: string;
   public description: string;
   public imagePath: string;
+  public id: string;
 
-  constructor(name, description, imagePath) {
+  constructor(name, description, imagePath, id) {
     this.title = name;
     this.description = description;
     this.imagePath = imagePath;
+    this.id = id;
   }
 }
 
@@ -19,83 +22,42 @@ export class Activity {
 })
 export class HomePage {
   activityList: Activity[];
-  completedList: Activity[];
-  private dbname = 'activities';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.activityList = [];
-    this.completedList = [];
-    this.initializePush();
     this.initializeAnalytics();
   }
 
   ionViewDidLoad() {
    console.log('-->  ionViewDidLoad(): Page Succesfully loaded - Initialize JSONStore');
-    var dbSchema = {
-      activities: {
-        searchFields: { name: 'string', description: 'string', thumbnail: 'string' },
-        sync: {
-          syncPolicy: 0,
-          syncAdapterPath: 'JSONStoreCloudantSync'
-        }
-      }
-    };
-    WL.JSONStore.init(dbSchema, {}).then(
-      (collection) => {
-       console.log('-->  ionViewDidLoad(): JSONStore Initialization Success');
-       console.log(JSON.stringify(collection));
-      }, (error) => {
-       console.log('-->  ionViewDidLoad(): JSONStore Initialization Failed :' + JSON.stringify(error));
-      });
   }
 
   doRefresh(refresher) {
-    var dbInstance = WL.JSONStore.get(this.dbname);
-    dbInstance.sync().done(
-      (success) => {
-       console.log('-->  doRefresh(): JSONStore Sync Success');
-        dbInstance.findAll(null).then(
-          (data) => {
-           console.log('-->  doRefresh(): JSONStore Documents Fetch Success');
-            this.activityList = [];
-            data.forEach(item => {
-              var activity = new Activity(item.name, item.description, item.thumbnail);
+    var resourceRequest = new WLResourceRequest("/adapters/ResourceAdapter/getItems", WLResourceRequest.GET);
+    resourceRequest.send().then ( (response) => { 
+      var listOfWorkOrders = response.responseJSON.rows ; 
+      this.activityList = [];
+      listOfWorkOrders.forEach(item => {
+              var activity = new Activity(item.doc.name, item.doc.description, item.doc.thumbnail, item.id);
               this.activityList.push(activity);
             });
-            refresher.complete();
-          });
-      }, (error) => {
-       console.log('-->  doRefresh(): JSONStore Sync Failed :' + JSON.stringify(error));
-        refresher.complete();
-      }
-    );
+      refresher.complete();
+    },  (error) => {
+      alert("Failure  " + JSON.stringify(error)); 
+    }); 
   }
 
-  removeItem(activity) {
-   console.log('-->  removeItem(): Move item from Active to Complete Tab'); 
-    this.logAnalytics(activity);
-    this.completedList.push(activity);
-    let index = this.activityList.indexOf(activity);
-    if (index > -1) {
-      this.activityList.splice(index, 1);
-    }
+  openItem(activity) {
+   console.log('-->  openItem(): Open item to view more detail');
+    this.navCtrl.push(ItemPage, {
+      data: activity
+    });
   }
 
   logAnalytics(activity) {
    console.log('-->  logAnalytics(): Log completed tasks'); 
     WL.Analytics.log({"job" : 'Completed task : ' + activity.title});
     WL.Analytics.send();
-  }
-
-  initializePush() {
-    MFPPush.initialize(
-      function (successResponse) {
-       console.log('-->  initializePush(): Failed to initialize');
-        this.registerDevice()
-        MFPPush.registerNotificationsCallback(this.notificationReceived);
-      }, function (failureResponse) {
-       console.log('-->  initializePush(): Failed to initialize' + JSON.stringify(failureResponse));
-      });
   }
 
   registerPush() {

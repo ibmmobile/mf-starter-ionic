@@ -15,6 +15,7 @@ export class LoginPage {
   public result: string;
   username: string;
   password: string;
+  shouldHide : Boolean;
 
   constructor(public app: App, private zone: NgZone, public events: Events) {
     events.subscribe('mfp:challenge', (msg , challengeHandler) => {
@@ -22,6 +23,7 @@ export class LoginPage {
       this.UserLoginChallengeHandler = challengeHandler;
       this.updateResult(msg);
     });
+    this.shouldHide = false;
   }
 
   login() {

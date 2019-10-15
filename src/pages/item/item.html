@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Work Item
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  <ion-card id="page-card21">
+    <ion-list>
+      <img [src]="imgurl"/>
+      <ion-item color="none" id="page-list-item7">
+        <ion-icon name="build" item-left></ion-icon>
+        {{title}}
+      </ion-item>
+      <ion-item id="page-list-item-container3">
+        <div id="page-markdown4" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            {{description}}
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

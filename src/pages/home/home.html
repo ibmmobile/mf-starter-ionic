@@ -30,22 +30,9 @@
           </ion-thumbnail>
           <h2>{{activity.title}}</h2>
           <p>{{activity.description}}</p>
-          <button ion-button clear (click)="removeItem(activity)" item-end>Done</button>
+          <button ion-button clear (click)="openItem(activity)" item-end>View</button>
       </ion-item>
     </ion-list>
-
-    <ion-list class="outer-content">
-        <ion-list-header>
-            Completed Tasks
-         </ion-list-header>
-          <ion-item *ngFor="let activity of completedList">
-              <ion-thumbnail item-start>
-                  <img [attr.src]="activity.imagePath">
-              </ion-thumbnail>
-              <h2>{{activity.title}}</h2>
-              <p>{{activity.description}}</p>
-          </ion-item>
-        </ion-list>
   
   <div *ngIf="activityList.length == 0" style="height: 100%;position: relative;top: 45%;text-align: center;">
       <div style="font-size: 20px;text-align: center;color: #90949c;">Pull to fetch tasks</div>

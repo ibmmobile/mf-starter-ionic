@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+import { ItemPage } from '../pages/item/item'
 import { HeaderMenuComponent } from '../components/header-menu/header-menu'
 
 @NgModule({
@@ -14,6 +15,7 @@ import { HeaderMenuComponent } from '../components/header-menu/header-menu'
     MyApp,
     LoginPage,
     HomePage,
+    ItemPage,
     HeaderMenuComponent
   ],
   imports: [
@@ -24,13 +26,15 @@ import { HeaderMenuComponent } from '../components/header-menu/header-menu'
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    ItemPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LoginPage,
     HomePage,
+    ItemPage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
